@@ -4,9 +4,9 @@
   "description": "Blog Costando",
   "main": "index.js",
   "scripts": {
-  "dev": "npx @11ty/eleventy --serve",
-  "build": "npx @11ty/eleventy"
-},
+    "dev": ".\\node_modules\\.bin\\eleventy.cmd --serve",
+    "build": ".\\node_modules\\.bin\\eleventy.cmd"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
