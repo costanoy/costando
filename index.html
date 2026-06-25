@@ -7,30 +7,60 @@
 </head>
 <body>
 
-    <header>
-    <h1>>COSTANDO</h1>
-    <p>Meu blog pessoal contando coisas sobre mim</p>
-    </header>
+    <!-- TELA DE LOGIN (aparece quando você NÃO está logado) -->
+    <section id="tela-login">
+        <h1>Costando</h1>
+        <p>Área privada. Só entra com login</p>
+        <input type="email" id="email" placeholder="E-mail">
+        <input type="password" id="senha" placeholder="Senha">
+        <button id="btn-entrar">Entrar</button>
+        <p id="erro-login"></p>
+    </section>
 
-    <main>
+    <!-- O BLOG (aparece só DEPOIS do login) -->
+    <section id="tela-blog" style="display:none;">
+        <header>
+            <h1>>COSTANDO</h1>
+            <p>Diário Pessoal</p>
+            <button id="btn-sair">Sair</button>
+        </header>
+        <main id="lista-posts">
+            <!-- os posts vão aparecer aqui -->
+        </main>
+        <footer>
+            <p>&copy; 2026 Costando. Feito por Vinícius</p>
+        </footer>
+    </section>
 
-        <article>
-            <h2>Como eu coloquei meu primeiro site no ar</h2>
-            <p>Publicado em 25 de junho de 2026</p>
-            <p>Nesse post eu conto como configurei o GitHub Pages com meu próprio domínio.</p>
-        </article>
+    <!-- 1. Carrega a biblioteca pronta do Supabase -->
+     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        <article>
-            <h2>Minha jornada rumo ao Cloud e DevOps</h2>
-            <p>Publicado em 24 de junho de 2026</p>
-            <p>Trabalho com redes e estou migrando de carreira. Aqui vou registrando o que estudo no caminho</p>
-        </article>
+    <!-- 2. O nosso código -->
+     <script>
+        // Suas credenciais - TROQUE pelos seus valores reais
+        const SUPABASE_URL = "https://emefdjgmpacswxjnxymh.supabase.co";
+        const SUPABASE_KEY =  "sb_publishable_kp6voQc-4WkwXo5eyJ02pw_VgftNmqf";
 
-    </main>
+        // Cria a conexão com o seu banco
+        const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    <footer>
-        <p>&copy; 2026 Costando. Feito por Vinícius</p>
-    </footer>
-    
+        // Atalhos pros elementos da página
+        const telaLogin = document.getElementById("tela-login");
+        const telaBlog = document.getElementById("tela-blog");
+        const erroLogin = document.getElementById("erro-login");
+
+        //Funções que trocam de tela
+        function mostrarBlog() {
+            telaLogin.style.display = "none";
+            telaBlog.style.display = "block";
+        }
+        function mostrarLogin() {
+            telaLogin.style.display = "block";
+            telaBlog.style.display = "none";
+        }
+
+        // Quando clicar em "Entrar"
+     </script>
+
 </body>
 </html>
