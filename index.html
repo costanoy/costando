@@ -60,7 +60,39 @@
         }
 
         // Quando clicar em "Entrar"
-     </script>
+        document.getElementById("btn-entrar").addEventListener("click", async () => {
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            const { error } = await db.auth.signInWithPassword({
+                email: email,
+                password: senha
+            });
+
+            if (error) {
+                erroLogin.textContent = "E-mail ou senha incorretos.";
+            } else {
+                mostrarBlog();
+            }
+        });
+
+        // Quando clicar em "Sair"
+        document.getElementById("btn-sair").addEventListener("click", async () => {
+            await db.auth.signOut();
+            mostrarLogin();
+        });
+
+        // Ao abrir a página: já estou logado de antes?
+        async function verificarSessao() {
+            const { data } = await db.auth.getSession();
+            if (data.session) {
+                mostrarBlog();
+            } else {
+                mostrarLogin();
+            }
+        }
+        verificarSessao();
+    </script>
 
 </body>
 </html>
